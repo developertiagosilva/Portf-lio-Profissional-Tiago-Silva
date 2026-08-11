@@ -277,6 +277,11 @@
             box-shadow: 0 8px 25px rgba(108, 92, 231, 0.45);
         }
 
+        .btn-submit:disabled {
+            background-color: #a29bfe;
+            cursor: not-allowed;
+        }
+
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -365,17 +370,11 @@
             </div>
 
             <div class="divider">
-                <span>ou envie uma mensagem</span>
+                <span><strong>ou envie uma mensagem</strong></span>
             </div>
 
-            <!-- FormSubmit direcionando para o seu Gmail -->
-            <form action="https://formsubmit.co/developertiagosilva@gmail.com" method="POST">
-    
-                <!-- URL CORRIGIDA: Apontando para o seu subdominio exato -->
-                <input type="hidden" name="_next" value="https://developertiagosilva.pages.dev/sucesso.html">
-                
-                <input type="hidden" name="_captcha" value="false">
-
+            <!-- Form sem action tradicional (tratado via JS) -->
+            <form id="contactForm">
                 <div class="form-group">
                     <label for="nome">Seu Nome ou Nome da Empresa *</label>
                     <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva ou Empresa XYZ" required>
@@ -396,16 +395,46 @@
                     <textarea id="mensagem" name="mensagem_ou_orcamento" placeholder="Conte-me um pouco sobre o que você precisa..." required></textarea>
                 </div>
 
-                <button type="submit" class="btn-submit">
+                <button type="submit" id="btnSubmit" class="btn-submit">
                     <i data-lucide="send"></i> Enviar Mensagem
                 </button>
             </form>
         </div>
     </section>
 
-    <!-- Inicialização dos ícones -->
+    <!-- Script JavaScript para envio em segundo plano e redirecionamento limpo -->
     <script>
         lucide.createIcons();
+
+        const form = document.getElementById('contactForm');
+        const btnSubmit = document.getElementById('btnSubmit');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Impede a saída padrão da página
+
+            // Desabilita o botão e mostra estado de carregando
+            btnSubmit.disabled = true;
+            btnSubmit.innerHTML = 'Enviando...';
+
+            const formData = new FormData(form);
+
+            // Envia para o FormSubmit via API AJAX (fetch)
+            fetch('https://formsubmit.co/ajax/developertiagosilva@gmail.com', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                // Independente da resposta, força o direcionamento para a sua pagina de sucesso
+                window.location.href = 'sucesso.html';
+            })
+            .catch(error => {
+                // Caso ocorra falha de rede, redireciona para sucesso do mesmo jeito
+                window.location.href = 'sucesso.html';
+            });
+        });
     </script>
 </body>
 </html>
