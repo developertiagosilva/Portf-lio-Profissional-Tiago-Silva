@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serviços & Soluções Digitais | Tiago Silva</title>
+    
+    <!-- Fonte Google Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícones Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary: #6C5CE7;
+            --primary-hover: #5b4bc4;
+            --primary-light: #f3f0ff;
+            --dark: #1f1f1f;
+            --gray: #666666;
+            --light-bg: #fdfbf7;
+            --border: #e0e0e0;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Cabeçalho de Navegação */
+        header {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 25px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background-color: #ffffff;
+            border: 2px solid var(--primary-light);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(108, 92, 231, 0.08);
+        }
+
+        .btn-back:hover {
+            background-color: var(--primary);
+            color: #ffffff;
+            transform: translateX(-3px);
+        }
+
+        /* Hero / Apresentação */
+        .hero-section {
+            max-width: 1000px;
+            margin: 20px auto 50px auto;
+            padding: 0 20px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: var(--primary-light);
+            color: var(--primary);
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 25px;
+            line-height: 1.25;
+        }
+
+        .hero-title span {
+            color: var(--primary);
+        }
+
+        .content-box {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(108, 92, 231, 0.1);
+            text-align: left;
+            margin-bottom: 60px;
+        }
+
+        .content-box p {
+            color: var(--gray);
+            font-size: 1.08rem;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .content-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-text {
+            font-weight: 600;
+            color: var(--dark);
+            border-left: 4px solid var(--primary);
+            padding-left: 15px;
+            margin: 25px 0;
+            background-color: var(--primary-light);
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* Seção do Formulário de Contato */
+        .form-section {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .form-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 12px 40px rgba(108, 92, 231, 0.12);
+            border: 1px solid rgba(108, 92, 231, 0.15);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .form-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            color: var(--gray);
+            font-size: 0.98rem;
+        }
+
+        .contact-fast {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn-whats-direct {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #25D366;
+            color: #ffffff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn-whats-direct:hover {
+            background-color: #1eb957;
+            transform: translateY(-2px);
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 30px 0;
+            color: var(--gray);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .divider span {
+            padding: 0 15px;
+        }
+
+        /* Estilos dos Campos do Formulário */
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #eef0f4;
+            border-radius: 12px;
+            font-size: 1rem;
+            color: var(--dark);
+            background-color: #fcfcfd;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(108, 92, 231, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background-color: var(--primary);
+            color: #ffffff;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.35);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.45);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsividade para Celulares */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.85rem;
+            }
+
+            .content-box {
+                padding: 25px;
+            }
+
+            .content-box p {
+                font-size: 0.98rem;
+            }
+
+            .form-card {
+                padding: 25px 20px;
+            }
+
+            .form-header h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header com botão de voltar -->
+    <header>
+        <a href="index.html" class="btn-back">
+            <i data-lucide="arrow-left"></i> Voltar ao Início
+        </a>
+    </header>
+
+    <!-- Apresentação dos Serviços -->
+    <main class="hero-section">
+        <span class="badge">Soluções Digitais</span>
+        <h1 class="hero-title">Transforme sua ideia em <span>presença digital</span></h1>
+
+        <div class="content-box">
+            <p>
+                Você tem um negócio, um projeto ou um serviço, mas ainda não possui um espaço profissional na internet? Um site ou aplicativo pode ser a porta de entrada para novas oportunidades e clientes em qualquer lugar do mundo.
+            </p>
+            
+            <div class="highlight-text">
+                Como engenheiro de software e desenvolvedor web, crio soluções digitais modernas, funcionais e personalizadas para ajudar sua marca a crescer. Desenvolvo websites, portfólios, páginas institucionais, sistemas web e aplicações pensadas para apresentar seus serviços de forma clara, profissional e atrativa.
+            </div>
+
+            <p>
+                Seu negócio não precisa estar limitado à sua cidade. Com uma presença digital bem estruturada, seus produtos e serviços podem ser encontrados por pessoas de diferentes lugares, a qualquer hora e em qualquer dispositivo.
+            </p>
+
+            <p>
+                Mais do que criar páginas, desenvolvo experiências que conectam pessoas, fortalecem marcas e transformam visitantes em possíveis clientes. A internet está cheia de oportunidades — e o seu negócio também pode fazer parte dela.
+            </p>
+
+            <p style="font-weight: 600; color: var(--primary);">
+                Dê o primeiro passo para levar sua ideia mais longe. Vamos criar juntos uma presença digital que represente o valor do seu trabalho.
+            </p>
+        </div>
+    </main>
+
+    <!-- Formulário de Contato -->
+    <section class="form-section" id="contato">
+        <div class="form-card">
+            <div class="form-header">
+                <h2>Solicite seu Orçamento</h2>
+                <p>Preencha o formulário abaixo ou chame diretamente no WhatsApp!</p>
+            </div>
+
+            <!-- Botão Direto WhatsApp -->
+            <div class="contact-fast">
+                <a href="https://wa.me/5541987441247?text=Ol%C3%A1%20Tiago,%20gostaria%20de%20um%20or%C3%A7amento%20para%20uma%20presen%C3%A7a%20digital!" target="_blank" class="btn-whats-direct">
+                    <i data-lucide="message-circle"></i> Conversar pelo WhatsApp
+                </a>
+            </div>
+
+            <div class="divider">
+                <span>ou envie uma mensagem</span>
+            </div>
+
+            <!-- FormSubmit direcionando para o seu Gmail -->
+            <form action="https://formsubmit.co/developertiagosilva@gmail.com" method="POST">
+                
+                <!-- Redireciona para a página de sucesso após o envio -->
+                <!-- <input type="hidden" name="_next" value="https://portf-lio-profissional-tiago-silva.pages.dev/sucesso.html"> -->
+                <input type="hidden" name="_next" value="https://portf-lio-profissional-tiago-silva.pages.dev/sucesso.html">
+
+                <!-- Remove o Captcha irritante para o usuário (opcional) -->
+                <input type="hidden" name="_captcha" value="false">
+
+                <div class="form-group">
+                    <label for="nome">Seu Nome ou Nome da Empresa *</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva ou Empresa XYZ" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contato_direto">WhatsApp / Telefone para Retorno *</label>
+                    <input type="tel" id="contato_direto" name="telefone_whatsapp" placeholder="(41) 99999-9999" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Seu E-mail *</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagem">Sua ideia, projeto ou orçamento *</label>
+                    <textarea id="mensagem" name="mensagem_ou_orcamento" placeholder="Conte-me um pouco sobre o que você precisa..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    <i data-lucide="send"></i> Enviar Mensagem
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Inicialização dos ícones -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
