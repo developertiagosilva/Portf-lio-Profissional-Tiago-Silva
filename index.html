@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiago Silva | Engenheiro de Software</title>
+    
+    <!-- Fonte Google Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET E ESTILOS BASE --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1f1f1f;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- HEADER / NAVEGAÇÃO --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 8%;
+            background-color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #1f1f1f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background-color: #6C5CE7;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #6C5CE7;
+        }
+
+        .btn-header {
+            background-color: #6C5CE7;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 14px rgba(108, 92, 231, 0.35);
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .btn-header:hover {
+            background-color: #5b4bc4;
+            transform: translateY(-2px);
+        }
+
+        /* Menu Mobile Toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background-color: #1f1f1f;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 8%;
+            max-width: 1350px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        .hero-content {
+            max-width: 540px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards 0.2s;
+        }
+
+        .hero-tag {
+            width: 60px;
+            height: 4px;
+            background-color: #6C5CE7;
+            margin-bottom: 25px;
+            border-radius: 2px;
+        }
+
+        .hero-title {
+            font-size: 2.9rem;
+            line-height: 1.25;
+            margin-bottom: 20px;
+            color: #1f1f1f;
+            font-weight: 700;
+        }
+
+        .hero-title span {
+            color: #6C5CE7;
+        }
+
+        .hero-description {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-primary {
+            background-color: #6C5CE7;
+            color: #fff;
+            padding: 14px 30px;
+            border-radius: 14px;
+            font-weight: 600;
+            box-shadow: 0 6px 18px rgba(108, 92, 231, 0.35);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #5b4bc4;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: #ffffff;
+            color: #1f1f1f;
+            padding: 14px 30px;
+            border-radius: 14px;
+            font-weight: 500;
+            border: 1px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: #6C5CE7;
+            color: #6C5CE7;
+        }
+
+        /* --- FOTO / PERFIL --- */
+        .hero-image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s forwards 0.4s;
+        }
+
+        .circle-outer {
+            position: relative;
+            width: 440px;
+            height: 440px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle-outer::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid #e5e5f0;
+            z-index: 1;
+        }
+
+        .circle-bg {
+            width: 380px;
+            height: 380px;
+            border-radius: 50%;
+            border: 16px solid #6C5CE7;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            z-index: 2;
+            box-shadow: 0 15px 35px rgba(108, 92, 231, 0.2);
+        }
+
+        /* .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        } */
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Mostra a imagem inteira sem cortar */
+    object-position: center;
+    transform: scale(0.99); /* Dá um pequeno respiro interno dentro do círculo */
+}
+
+
+        /* --- ANIMAÇÕES CSS --- */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- RESPONSIVIDADE (MOBILE) --- */
+        @media (max-width: 900px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+                padding: 20px 0;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            .btn-header {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+            .hero-content {
+                margin-top: 30px;
+            }
+
+            .hero-tag {
+                margin: 0 auto 20px auto;
+            }
+
+            .hero-title {
+                font-size: 2.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .circle-outer {
+                width: 300px;
+                height: 300px;
+            }
+
+            .circle-bg {
+                width: 260px;
+                height: 260px;
+                border-width: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABEÇALHO -->
+    <header>
+        <div class="logo">
+            <div class="logo-icon">T</div>
+            <span>Tiago Silva</span>
+        </div>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav id="nav-menu">
+            <ul>
+                <li><a href="#servicos" class="nav-link">Serviços</a></li>
+                <li><a href="#projetos" class="nav-link">Projetos</a></li>
+                <li><a href="#contatos" class="nav-link">Contatos</a></li>
+            </ul>
+        </nav>
+
+        <a href="https://wa.me/5541987441247?text=Ol%C3%A1%20Tiago,%20gostaria%20de%20conversar%20sobre%20um%20projeto!" target="_blank" class="btn-header">Vamos Conversar</a>
+    </header>
+
+    <!-- SEÇÃO PRINCIPAL (HERO) -->
+    <main class="hero">
+        <div class="hero-content">
+            <div class="hero-tag"></div>
+            <h1 class="hero-title">Olá, eu sou <span>Tiago Silva</span></h1>
+            <p class="hero-description">
+                Engenheiro de Software & Desenvolvedor. Transformando ideias em soluções digitais modernas, inteligentes e de alto impacto.
+            </p>
+            <div class="hero-buttons">
+                <a href="#projetos" class="btn-primary">Ver Projetos</a>
+                <a href="#contatos" class="btn-secondary">Entrar em Contato</a>
+            </div>
+        </div>
+
+        <div class="hero-image-container">
+            <div class="circle-outer">
+                <div class="circle-bg">
+                    <img src="img_perfil.png" alt="Tiago Silva" class="profile-img">
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
